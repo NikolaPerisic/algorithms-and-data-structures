@@ -13,4 +13,4 @@ function miniMaxSum(arr) {
 
     return minArr + " " + maxArr;
 }
-console.log(miniMaxSum([1,2,3,4,5]));
+console.log(miniMaxSum([34,22,2,91,115]));

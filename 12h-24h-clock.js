@@ -1,4 +1,4 @@
-//Time conversion 12h to 24h clock
+//Time conversion AM/PM to 24h clock
 function timeConversion(s) {
     let arr = s.split("");
     arr[1] = arr[0] + arr[1];
