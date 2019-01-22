@@ -1,2 +1,2 @@
-# algorithm challenges javascript
+# algorithms and data structures implementations using javascript
 
