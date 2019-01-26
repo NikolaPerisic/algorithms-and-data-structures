@@ -5,7 +5,7 @@ data sets and when input is almost sorted.
 
 // insertion sort
 function insertionSort(arr) {
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 1; i < arr.length; i++) {
         let key = arr[i];
         let j = i - 1;
 
