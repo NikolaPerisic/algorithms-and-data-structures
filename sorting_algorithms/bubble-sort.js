@@ -2,7 +2,7 @@
 Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
 */
 
-function countSwaps(a) {
+function bubbleSort(a) {
     let swaps = 0;
     let arr = [...a];
     for (let i = 0; i < arr.length; i++) {
@@ -19,4 +19,4 @@ function countSwaps(a) {
         arr[0]
     }.\nLast Element: ${arr[arr.length - 1]} \nOutput: ${arr}`;
 }
-console.log(countSwaps([3, 4, 5, 1, 2, 7, 9, 8, 6]));
+console.log(bubbleSort([3, 4, 5, 1, 2, 7, 9, 8, 6]));
