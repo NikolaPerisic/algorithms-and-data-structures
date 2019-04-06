@@ -325,6 +325,7 @@ palindromeList.add("n");
 console.log(palindromeList.toString());
 
 function palindromeListCheck(list) {
+    if (list.size() === 0 || list.size() === 1) return true;
     let len = Math.floor(list.size() / 2);
     let start = list[head];
     let end = list[tail];
