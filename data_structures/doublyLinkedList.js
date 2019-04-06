@@ -40,6 +40,7 @@ class DoublyLinkedList {
         if (index === 0) {
             newNode.next = this[head];
             this[head].prev = newNode;
+            this[head] = newNode;
         } else {
             let currentNode = this[head];
             let i = 0;
@@ -179,18 +180,159 @@ class DoublyLinkedList {
 }
 
 const list = new DoublyLinkedList();
-list.add("Bob");
-list.add("Tom");
-list.add("23");
-list.add("89");
+list.add(4);
+list.add(56);
+list.add(34);
+list.add(7);
+list.add(34);
 console.log(list.toString());
-list.insertBefore("pie", 1);
+list.insertBefore(29, 1);
 console.log(list.toString());
-list.insertAfter("Mira", 3);
+list.insertAfter(91, 3);
 console.log(list.toString());
 console.log(list.get(2));
-console.log(list.indexOf("Mira"));
+console.log(list.indexOf(29));
 list.deleteNode(0);
 console.log(list.toString());
 console.log(list.size());
 console.log(list.toString());
+
+// function to remove duplicates from the list
+function removeDups(list) {
+    console.log("===== function to remove duplicates=====");
+    let mySet = new Set();
+    let runner = list[head];
+    while (runner !== null) {
+        if (!mySet.has(runner.data)) {
+            mySet.add(runner.data);
+        } else {
+            let index = list.indexOf(runner.data);
+            list.deleteNode(index);
+        }
+        runner = runner.next;
+    }
+    return list;
+}
+removeDups(list);
+console.log(list.toString());
+
+//function to return Kth to last element
+
+function kthToLast(list, k) {
+    console.log("===== function to return kth to last=====");
+    let kth = list.size() - k;
+    return list.get(kth);
+}
+console.log(kthToLast(list, 3));
+
+// Partition function, all nodes less than x come before nodes greater or equal to x
+
+function partition(list, x) {
+    console.log("===== partition function=====");
+    let newList = new DoublyLinkedList();
+    newList.add(x);
+    let runner = list[head];
+    while (runner !== null) {
+        if (runner.data < x) {
+            let ind = newList.indexOf(x);
+            newList.insertBefore(runner.data, ind);
+        } else {
+            let ind = newList.indexOf(x);
+            newList.insertAfter(runner.data, ind);
+        }
+        runner = runner.next;
+    }
+    newList.deleteNode(newList.indexOf(x));
+    list[head] = newList[head];
+    return list;
+}
+
+// partition list func call
+console.log(list.toString());
+partition(list, 34);
+console.log(list.toString());
+
+/*
+Sum Lists: You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list.
+
+EXAMPLE
+Input: (7-> 1 -> 6) + (5 -> 9 -> 2) .That is,617 + 295. Output:2 -> 1 -> 9.That is,912.
+*/
+console.log("===== Sum lists=====");
+const list1 = new DoublyLinkedList();
+const list2 = new DoublyLinkedList();
+list1.add(1);
+list1.add(2);
+list1.add(3);
+list1.add(4);
+
+list2.add(5);
+list2.add(6);
+list2.add(7);
+
+console.log(list1.toString());
+console.log(list2.toString());
+
+function sumLists(list1, list2) {
+    const listSum = new DoublyLinkedList();
+    let runner1 = list1[head],
+        runner2 = list2[head];
+    let rem = 0,
+        n = 1,
+        total = 0,
+        sum = 0;
+    while (runner1 !== null || runner2 !== null) {
+        let num1, num2;
+        runner1 !== null ? (num1 = runner1.data) : (num1 = 0);
+        runner2 !== null ? (num2 = runner2.data) : (num2 = 0);
+        total += (num1 + num2) * n;
+        if (num1 + num2 + rem > 9) {
+            sum = (num1 + num2 + rem) % 10;
+            listSum.add(sum);
+            rem = 1;
+        } else {
+            sum = num1 + num2 + rem;
+            listSum.add(sum);
+            rem = 0;
+        }
+        n *= 10;
+        runner1 !== null ? (runner1 = runner1.next) : runner1;
+        runner2 !== null ? (runner2 = runner2.next) : runner2;
+    }
+    console.log(`Total sum: ${total}`);
+    return listSum.toString();
+}
+console.log(sumLists(list1, list2));
+
+// Palindrome: Implement a function to check if a linked list is a palindrome.
+
+console.log("===== Check if list is palindrome=====");
+const palindromeList = new DoublyLinkedList();
+palindromeList.add("n");
+palindromeList.add("e");
+palindromeList.add("v");
+palindromeList.add("e");
+palindromeList.add("r");
+palindromeList.add("o");
+palindromeList.add("d");
+palindromeList.add("d");
+palindromeList.add("o");
+palindromeList.add("r");
+palindromeList.add("e");
+palindromeList.add("v");
+palindromeList.add("e");
+palindromeList.add("n");
+console.log(palindromeList.toString());
+
+function palindromeListCheck(list) {
+    let len = Math.floor(list.size() / 2);
+    let start = list[head];
+    let end = list[tail];
+    for (let i = 0; i < len; i++) {
+        if (start.data !== end.data) return false;
+        start = start.next;
+        end = end.prev;
+    }
+    return true;
+}
+console.log(palindromeListCheck(palindromeList));
