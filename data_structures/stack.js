@@ -18,7 +18,7 @@ class Stack {
         return this.length;
     }
     pop() {
-        if (this.isEmpty()) return undefined;
+        if (this.isEmpty()) throw new Error("Empty Stack");
         const node = this._top;
         this._top = this._top.next;
         node.next = null;
