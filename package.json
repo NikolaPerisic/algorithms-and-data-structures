@@ -1,0 +1,19 @@
+{
+  "name": "algorithms-and-data-structures",
+  "version": "1.0.0",
+  "description": "Algorithms and Data Structures",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikolaPerisic/algorithms-and-data-structures.git"
+  },
+  "author": "NP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NikolaPerisic/algorithms-and-data-structures/issues"
+  },
+  "homepage": "https://github.com/NikolaPerisic/algorithms-and-data-structures#readme"
+}
